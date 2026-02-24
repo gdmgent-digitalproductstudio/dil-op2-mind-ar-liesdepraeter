@@ -1,0 +1,36 @@
+html, body {
+    width: 100svw;
+    height: 100svh;
+    overflow: hidden;
+}
+
+a-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#controlPanel {
+  position: fixed;
+  right: 20px; /* of left: 20px; */
+  top: 50px;
+  width: 150px;
+  background: rgba(255,255,255,0.9);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 10;
+  font-family: sans-serif;
+}
+
+#controlPanel h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+#controlPanel label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
