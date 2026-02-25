@@ -10,10 +10,10 @@ Hierdoor kunnen de zwevende objecten rond het hoofd consistent gepositioneerd bl
 Voor de Image Tracking heb ik de MaxTrack ingesteld op 1. Dit omdat je in een echt museum ook maar 1 schilderij tergelijk zou scannen.
 
 # Markers / Targets
-target-0.jpg	Banksy – Girl with Balloon
-target-1.jpg	Piet Modriaan - Compositie met rood, geel en blauw
-target-2.jpg	Claude Monet – Impression, soleil levant
-target-3.jpg	Vincent Van Gogh – 3D-model
+target-0.jpg	Banksy – Girl with Balloon                              3D-animatie hart als ballon
+target-1.jpg	Piet Modriaan - Compositie met rood, geel en blauw      Gekleurde vlakken komen naar voor
+target-2.jpg	Claude Monet – Impression, soleil levant                Geluid van de zee, alsof je in het schilderij zit + toggle
+target-3.jpg	Vincent Van Gogh – 3D-model                             Vincent komt uit het schilderij en draait rond
 
 Voor de targets heb ik openbare afbeeldingen gedownload van Google en onbewerkt gelaten.
 
