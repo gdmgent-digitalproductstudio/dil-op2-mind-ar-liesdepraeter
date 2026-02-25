@@ -79,6 +79,12 @@ body {
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+  }
+}
+
 /* Footer */
 .site-footer {
   text-align: center;
@@ -137,7 +143,6 @@ a-scene {
   position: fixed;
   right: 2rem; 
   top: 2rem;
-  
   width: 220px;
   background-color: #fff;
   border-radius: 16px;
@@ -145,6 +150,13 @@ a-scene {
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
   z-index: 10;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .control-panel {
+    top: unset;
+    bottom: 2rem;
+  }
 }
 
 .panel-title {
