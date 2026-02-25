@@ -4,6 +4,91 @@ html, body {
     overflow: hidden;
 }
 
+body {
+  background-color: #f7f5f2;
+  color: #333;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/********************HOME********************/
+/* Header */
+.site-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #e6dfd7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.site-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Main content */
+.site-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.menu {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 17.1875rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+.menu-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.menu-label {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #e6dfd7;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/*******************************Face + Image*****************************/
 a-scene {
     position: fixed;
     top: 0;
@@ -12,25 +97,89 @@ a-scene {
     height: 100vh;
 }
 
-#controlPanel {
+/* Terug-knop linkerboven */
+.back-button {
   position: fixed;
-  right: 20px; /* of left: 20px; */
-  top: 50px;
-  width: 150px;
-  background: rgba(255,255,255,0.9);
-  padding: 10px;
-  border-radius: 8px;
+  top: 2rem;
+  left: 2rem;
+  width: 60px;
+  height: 60px;
   z-index: 10;
-  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffcc;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#controlPanel h3 {
-  margin: 0 0 10px 0;
-  font-size: 16px;
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-#controlPanel label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
+.back-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/*******************************Face*****************************/
+/* Control panel rechts onderin */
+.control-panel {
+  position: fixed;
+  right: 2rem; 
+  top: 2rem;
+  
+  width: 220px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  z-index: 10;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.panel-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.panel-item--brush {
+  flex-direction: row;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.panel-item input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.panel-item select {
+  margin-top: 0.3rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.panel-item select:focus {
+  outline: none;
+  border-color: #888;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }

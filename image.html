@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <title>AR Museum</title>
+  </head>
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc: ./assets/targets.mind; maxtrack: 1;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      device-orientation-permission-ui="enabled: false"
+      vr-mode-ui="enabled: false"
+    >
+        <a-assets>
+            <a-asset-item
+              id="heart"
+              src="./assets/pumping_heart_model.glb"
+            ></a-asset-item>
+            <a-asset-item
+              id="van_gogh"
+              src="./assets/vincent_van_gogh.glb"
+            ></a-asset-item>
+            <audio id="ocean" src="./assets/ocean.wav"></audio>
+            <img id="volumeOn" src="./assets/volume-2.svg">
+            <img id="volumeOff" src="./assets/volume-x.svg">
+        </a-assets>
+
+        <a-entity mindar-image-target="targetIndex: 0">
+            <!--Test-->
+            <!--<a-box position="0 0 0" material="color:red;"></a-box>-->
+            <a-gltf-model
+                position="0.15 0.155 0"
+                rotation="0 0 0"
+                scale="0.0015 0.0015 0.0015"
+                src="#heart"
+                animation-mixer="clip: *; loop: repeat"
+            ></a-gltf-model>
+            <a-plane rotation="0 0 0" position="0.8 0 0" color="#ffffff" width="0.5" height="0.6">
+                <a-text value="Girl with Balloon" color="black" width="0.8" position="0 0.05 0.01" align="center"></a-text>
+                <a-text value="Banksy - 2002" color="black" width="0.8" position="-0.02 -0.02 0.05" align="center"></a-text>
+            </a-plane>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-box depth="0.23" height="0.23" width="0.23" position="0.1 -0.23 0" material="color:blue;"></a-box>
+            <a-box depth="0.32" height="0.32" width="0.42" position="-0.22 0.2 0" material="color:red;"></a-box>
+            <a-box depth="0.3" height="0.3" width="0.1" position="-0.35 -0.27 0" material="color:yellow;"></a-box>
+            <a-plane rotation="0 0 0" position="0.9 0 0" color="#ffffff" width="0.65" height="0.8">
+                <a-text value="Compositie met rood, geel en blauw" color="black" width="0.8" position="0 0.05 0.01" align="center"></a-text>
+                <a-text value="Piet Mondriaan - 1930" color="black" width="0.8" position="-0.02 -0.02 0.05" align="center"></a-text>
+            </a-plane>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2">
+            <!--Test-->
+            <!--<a-box position="0 0 0" material="color:green;"></a-box>-->
+            <a-entity
+                id="oceanSound"
+                sound="src: url(./assets/ocean.wav); autoplay: false; loop: true; positional: false">
+            </a-entity>
+            <a-plane rotation="0 0 0" position="0.8 0 0" color="#ffffff" width="0.5" height="0.6">
+                <a-text value="Impression, soleil levant" color="black" width="0.8" position="0 0.05 0.01" align="center"></a-text>
+                <a-text value="Claude Monet - 1872" color="black" width="0.8" position="-0.02 -0.02 0.05" align="center"></a-text>
+                <a-image id="volumeOnIcon" class="clickable" src="#volumeOn" position="0 -0.15 0.01" rotation="0 0 0" scale="0.1 0.1 0.1" visible="true"></a-image>
+                <a-image id="volumeOffIcon" class="clickable" src="#volumeOff" position="0 -0.15 0.01" rotation="0 0 0" scale="0.1 0.1 0.1" visible="false"></a-image>
+            </a-plane>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3">
+            <!--Test-->
+            <!--<a-box position="0 0 0" material="color:yellow;"></a-box>-->
+            <a-plane rotation="0 0 0" color="#9f8467" width="100%" height="100%"></a-plane>
+            <a-gltf-model
+                position="0 -0.12 0"
+                rotation="0 -25 0"
+                scale="1.1 1.1 1.1"
+                src="#van_gogh"
+                animation="property: rotation; to: 0 335 0; loop: true; dur: 8000; easing: linear"
+            ></a-gltf-model>
+            <a-plane rotation="0 0 0" position="0.9 0 0.05" color="#ffffff" width="0.65" height="0.8">
+                <a-text value="Zelfportret met strohoed" color="black" width="0.85" position="0 0.05 0.01" align="center"></a-text>
+                <a-text value="Vincent van Gogh - 1887" color="black" width="0.85" position="-0.02 -0.02 0.05" align="center"></a-text>
+            </a-plane>
+        </a-entity>
+ 
+        <a-camera cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 0" look-controls="enabled: false"></a-camera>
+    </a-scene>
+
+    <!-- Terug-knop -->
+    <a href="index.html" class="back-button">
+        <img src="assets/arrow-big-left.svg" alt="Terug naar start" class="back-icon">
+    </a>
+
+    <script src="./scripts/image.js"></script>
+  </body>
+</html>

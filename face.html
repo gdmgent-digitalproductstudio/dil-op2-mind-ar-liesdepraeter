@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+    <title>AR Museum</title>
   </head>
   <body>
     <a-scene
@@ -16,7 +17,7 @@
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
     >
-      <a-camera active="false" position="0 0 0"></a-camera>
+      <a-camera look-controls="enabled: false" active="false" position="0 0 0" cursor="fuse: false; rayOrigin: mouse" wasd-controls="enabled: false"></a-camera>
 
       <a-assets>
         <a-asset-item
@@ -110,22 +111,28 @@
 
     </a-scene>
 
-    <div id="controlPanel">
-        <h3>Accessoires</h3>
-        
-        <label>
-            <input type="checkbox" id="toggleBrush" checked>
-            Penseel zichtbaar
-        </label>
-        
-        <label>
-            Hoed kiezen:
-            <select id="hatSelect">
-            <option value="none">Geen</option>
-            <option value="leatherCap">Leather Cap</option>
-            <option value="beanie">Beanie</option>
-            </select>
-        </label>
+    <!-- Terug-knop -->
+    <a href="index.html" class="back-button">
+    <img src="assets/arrow-big-left.svg" alt="Terug naar start" class="back-icon">
+    </a>
+
+    <!-- Control panel voor penseel en hoeden -->
+    <div class="control-panel">
+    <h3 class="panel-title">Accessoires</h3>
+
+    <label class="panel-item panel-item--brush">
+        <p>Penseel zichtbaar</p>
+        <input type="checkbox" id="toggleBrush" checked>
+    </label>
+
+    <label class="panel-item">
+        Hoed kiezen:
+        <select id="hatSelect">
+        <option value="none">Geen</option>
+        <option value="leatherCap">Leather Cap</option>
+        <option value="beanie">Beanie</option>
+        </select>
+    </label>
     </div>
 
     <script src="./scripts/face.js"></script>
