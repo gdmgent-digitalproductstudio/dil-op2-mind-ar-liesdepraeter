@@ -1,6 +1,4 @@
-/*Enkel desktop*/
-
-/*window.addEventListener("load", () => {
+window.addEventListener("load", () => {
 
   console.log("Scene loaded");
 
@@ -75,73 +73,4 @@
     }
   });
 
-});*/
-
-/*inclusief touch*/
-const volOn = document.querySelector("#volumeOnIcon");
-const volOff = document.querySelector("#volumeOffIcon");
-const soundEntity = document.querySelector("#oceanSound");
-
-let isPlaying = false;
-let audioUnlocked = false;
-let targetVisible = false;
-
-const target = document.querySelector('[mindar-image-target="targetIndex: 2"]');
-
-const unlockAudio = () => {
-  if (!audioUnlocked) {
-    soundEntity.components.sound.playSound();
-    soundEntity.components.sound.stopSound();
-    audioUnlocked = true;
-    console.log("Audio unlocked");
-  }
-};
-
-const toggleAudio = () => {
-  if (!targetVisible) return;
-
-  unlockAudio();
-
-  if (isPlaying) {
-    soundEntity.components.sound.stopSound();
-    isPlaying = false;
-    volOn.setAttribute("visible", false);
-    volOff.setAttribute("visible", true);
-  } else {
-    soundEntity.components.sound.playSound();
-    isPlaying = true;
-    volOn.setAttribute("visible", true);
-    volOff.setAttribute("visible", false);
-  }
-};
-
-// 👆 Luister naar A-Frame click event op de iconen
-volOn.addEventListener("click", toggleAudio);
-volOff.addEventListener("click", toggleAudio);
-
-// Target events
-target.addEventListener("targetFound", () => {
-  console.log("Target found");
-  targetVisible = true;
-
-  unlockAudio();
-
-  if (!isPlaying) {
-    soundEntity.components.sound.playSound();
-    isPlaying = true;
-    volOn.setAttribute("visible", true);
-    volOff.setAttribute("visible", false);
-  }
-});
-
-target.addEventListener("targetLost", () => {
-  console.log("Target lost");
-  targetVisible = false;
-
-  if (isPlaying) {
-    soundEntity.components.sound.stopSound();
-    isPlaying = false;
-    volOn.setAttribute("visible", false);
-    volOff.setAttribute("visible", true);
-  }
 });
