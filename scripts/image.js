@@ -1,3 +1,5 @@
+/*Enkel desktop*/
+
 /*window.addEventListener("load", () => {
 
   console.log("Scene loaded");
@@ -75,75 +77,71 @@
 
 });*/
 
-window.addEventListener("load", () => {
+/*inclusief touch*/
+const volOn = document.querySelector("#volumeOnIcon");
+const volOff = document.querySelector("#volumeOffIcon");
+const soundEntity = document.querySelector("#oceanSound");
 
-  console.log("Scene loaded");
+let isPlaying = false;
+let audioUnlocked = false;
+let targetVisible = false;
 
-  const soundEntity = document.querySelector("#oceanSound");
-  let isPlaying = false;       // houdt bij of audio speelt
-  let audioUnlocked = false;   // nodig voor mobiele browsers (touch vereist)
+const target = document.querySelector('[mindar-image-target="targetIndex: 2"]');
 
-  const volOn = document.querySelector("#volumeOnIcon");
-  const volOff = document.querySelector("#volumeOffIcon");
+const unlockAudio = () => {
+  if (!audioUnlocked) {
+    soundEntity.components.sound.playSound();
+    soundEntity.components.sound.stopSound();
+    audioUnlocked = true;
+    console.log("Audio unlocked");
+  }
+};
 
-  const target = document.querySelector('[mindar-image-target="targetIndex: 2"]');
-  let targetVisible = false;
+const toggleAudio = () => {
+  if (!targetVisible) return;
 
-  const unlockAudio = () => {
-    if (!audioUnlocked) {
-      soundEntity.components.sound.playSound();
-      soundEntity.components.sound.stopSound();
-      audioUnlocked = true;
-      console.log("Audio unlocked");
-    }
-  };
+  unlockAudio();
 
-  const toggleAudio = () => {
-    if (!targetVisible) return;
+  if (isPlaying) {
+    soundEntity.components.sound.stopSound();
+    isPlaying = false;
+    volOn.setAttribute("visible", false);
+    volOff.setAttribute("visible", true);
+  } else {
+    soundEntity.components.sound.playSound();
+    isPlaying = true;
+    volOn.setAttribute("visible", true);
+    volOff.setAttribute("visible", false);
+  }
+};
 
-    unlockAudio();
+// 👆 Luister naar A-Frame click event op de iconen
+volOn.addEventListener("click", toggleAudio);
+volOff.addEventListener("click", toggleAudio);
 
-    if (isPlaying) {
-      soundEntity.components.sound.stopSound();
-      isPlaying = false;
-      volOn.setAttribute("visible", false);
-      volOff.setAttribute("visible", true);
-    } else {
-      soundEntity.components.sound.playSound();
-      isPlaying = true;
-      volOn.setAttribute("visible", true);
-      volOff.setAttribute("visible", false);
-    }
-  };
+// Target events
+target.addEventListener("targetFound", () => {
+  console.log("Target found");
+  targetVisible = true;
 
-  // ✅ Luister naar zowel klik als touch
-  window.addEventListener("click", toggleAudio);
-  window.addEventListener("touchstart", toggleAudio);
+  unlockAudio();
 
-  target.addEventListener("targetFound", () => {
-    console.log("Target found");
-    targetVisible = true;
+  if (!isPlaying) {
+    soundEntity.components.sound.playSound();
+    isPlaying = true;
+    volOn.setAttribute("visible", true);
+    volOff.setAttribute("visible", false);
+  }
+});
 
-    unlockAudio();
+target.addEventListener("targetLost", () => {
+  console.log("Target lost");
+  targetVisible = false;
 
-    if (!isPlaying) {
-      soundEntity.components.sound.playSound();
-      isPlaying = true;
-      volOn.setAttribute("visible", true);
-      volOff.setAttribute("visible", false);
-    }
-  });
-
-  target.addEventListener("targetLost", () => {
-    console.log("Target lost");
-    targetVisible = false;
-
-    if (isPlaying) {
-      soundEntity.components.sound.stopSound();
-      isPlaying = false;
-      volOn.setAttribute("visible", false);
-      volOff.setAttribute("visible", true);
-    }
-  });
-
+  if (isPlaying) {
+    soundEntity.components.sound.stopSound();
+    isPlaying = false;
+    volOn.setAttribute("visible", false);
+    volOff.setAttribute("visible", true);
+  }
 });
