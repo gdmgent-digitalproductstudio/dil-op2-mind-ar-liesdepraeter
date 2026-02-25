@@ -2,10 +2,13 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/main.css">
+    
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+
     <title>AR Museum</title>
   </head>
   <body>
@@ -43,8 +46,8 @@
       <a-entity mindar-face-target="anchorIndex: 168">
         <a-entity id="brushEntity">
             <a-gltf-model
-              position="0.55 0.05 -0.6"
-              rotation="0 90 75"
+              position="0.6 0.3 -0.6"
+              rotation="0 80 75"
               scale="0.2 0.2 0.2"
               src="#roundBrush"
             ></a-gltf-model>
@@ -53,7 +56,7 @@
         <a-entity id="hatEntity">
             <a-gltf-model
               id="leatherCapModel"
-              position="0 0.3 -0.7"
+              position="0 0.8 -0.7"
               rotation="7 0 0"
               scale="7.5 7.5 7.5"
               src="#leatherCap"
@@ -62,7 +65,7 @@
 
             <a-gltf-model
               id="beanieModel"
-              position="0 0.1.7 -0.65"
+              position="0 0.35 -0.65"
               rotation="1.5 0 0"
               scale="3.3 3.3 3.3"
               scale="1 1 1"
@@ -71,6 +74,7 @@
             ></a-gltf-model>
         </a-entity>
 
+        <!--Test-->
         <!--<a-sphere 
             position="1 0.3 0" 
             radius="0.15" 
@@ -116,7 +120,7 @@
     <img src="assets/arrow-big-left.svg" alt="Terug naar start" class="back-icon">
     </a>
 
-    <!-- Control panel voor penseel en hoeden -->
+    <!-- Control panel -->
     <div class="control-panel">
     <h3 class="panel-title">Accessoires</h3>
 

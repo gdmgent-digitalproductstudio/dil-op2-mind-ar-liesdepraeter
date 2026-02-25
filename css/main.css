@@ -14,7 +14,7 @@ body {
 }
 
 
-/********************HOME********************/
+/**************************************HOME***************************************/
 /* Header */
 .site-header {
   text-align: center;
@@ -90,6 +90,13 @@ body {
 
 /*******************************Face + Image*****************************/
 a-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.a-canvas {
     position: fixed;
     top: 0;
     left: 0;
