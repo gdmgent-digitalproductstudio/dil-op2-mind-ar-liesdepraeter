@@ -14,7 +14,14 @@ body {
 }
 
 
+
 /**************************************HOME***************************************/
+@media (max-width: 768px) {
+  .home-page {
+    overflow-y: auto;
+  }
+}
+
 /* Header */
 .site-header {
   text-align: center;
